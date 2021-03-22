@@ -4,5 +4,32 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- Arm_Left arm_Left = new Arm_Left() -->
+	<bean class="com.sw.s2.robot.Arm_Left" id="arm_Left"></bean>
+	
+	<!--  Arm_Right arm_right = new Arm_Right() -->
+	<bean class="com.sw.s2.robot.Arm_Right" id="arm_Right"></bean>
+	
+	<!-- Robot 객체 생성 Robot robot = new Robot();  ==> 기본생성자 호출 -->
+	<bean class="com.sw.s2.robot.Robot" id="robot"> <!-- 기본생성자를 호출 -->
+		<!-- Setter 사용 -->
+		<property name="arm_Left" ref="arm_Left"></property>
+		<property name="arm_Right" ref="arm_Right"></property>
+		<!-- 매개변수가 있는 생성자 사용 -->
+		<!--  name 속성(생성자에 사용된 변수명) 사용 -->
+			<constructor-arg name="age" value="20"></constructor-arg>
+			<constructor-arg name="name" value="sunwoo"></constructor-arg>
+			<constructor-arg name="price" value="200"></constructor-arg>
 		
-</beans>
+		 <!-- index 속성(생성자의 매개변수 선언된 순서) 사용
+			 <constructor-arg index="0" value="20"></constructor-arg>
+			 <constructor-arg index="1" value="sunwoo"></constructor-arg>
+			 <constructor-arg index="2" value="200"></constructor-arg>
+		 -->
+		 <!-- 데이터타입 (생성자의 매개변수의 데이터타입) 사용
+		 <constructor-arg type="int" value=></constructor-arg>
+		  -->
+	</bean>
+	
+</beans> 
